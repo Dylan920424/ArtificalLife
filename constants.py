@@ -5,4 +5,4 @@ amplitudeB, frequencyB, phaseOffsetB = numpy.pi/4, 10, numpy.pi/2
 
 steps = 1000
 maxForce = 500
-sleepTime = 1/60
+sleepTime = 1/240
