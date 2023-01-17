@@ -15,7 +15,6 @@ class ROBOT:
     def Prepare_To_Sense(self):
         self.sensors = {}
         for linkName in pyrosim.linkNamesToIndices:
-            print(linkName)
             self.sensors[linkName] = SENSOR(linkName)
 
     def Sense(self,i):
@@ -36,4 +35,12 @@ class ROBOT:
     
     def Think(self):
         self.nn.Update()
-        self.nn.Print()
+
+    def Get_Fitness(self):
+        stateOfLinkZero = p.getLinkState(self.robotId, 0)
+        positionOfLinkZero = stateOfLinkZero[0]
+        xCoordinateOfLinkZero = positionOfLinkZero[0]
+        f = open("fitness.txt", "w")
+        f.write(str(xCoordinateOfLinkZero))
+        f.close
+        exit()

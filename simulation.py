@@ -7,8 +7,12 @@ import constants as c
 import pyrosim.pyrosim as pyrosim
 
 class SIMULATION:
-    def __init__(self) -> None:
-        self.physicsClient = p.connect(p.GUI)
+    def __init__(self, directOrGUI) -> None:
+        self.directOrGUI = directOrGUI
+        if directOrGUI == "DIRECT":
+            self.physicsClient = p.connect(p.DIRECT)
+        else:
+            self.physicsClient = p.connect(p.GUI)
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0,0,-9.8)
         self.world = WORLD()
@@ -20,11 +24,11 @@ class SIMULATION:
             self.robot.Sense(i)
             self.robot.Think()
             self.robot.Act(i)
-            # backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
-            # frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
-            # pyrosim.Set_Motor_For_Joint(bodyIndex=robotId, jointName="Torso_BackLeg", controlMode=p.POSITION_CONTROL, targetPosition=targetAnglesB[i], maxForce=c.maxForce)
-            # pyrosim.Set_Motor_For_Joint(bodyIndex=robotId, jointName="Torso_FrontLeg", controlMode=p.POSITION_CONTROL, targetPosition=targetAnglesF[i], maxForce=c.maxForce)
-            time.sleep(c.sleepTime)
+            if self.directOrGUI == "GUI":
+                time.sleep(c.sleepTime)
+
+    def Get_Fitness(self):
+        self.robot.Get_Fitness()
 
     def __del__(self):
         p.disconnect()
