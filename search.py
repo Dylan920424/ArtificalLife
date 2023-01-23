@@ -1,9 +1,11 @@
 import os
-import hillclimber
+import parallelHillClimber
 
-hc = hillclimber.HILLCLIMBER()
-hc.Evolve()
-hc.Show_Best()
+os.system("del brain*.nndf")
+os.system("del fitness*.txt")
+phc = parallelHillClimber.PARALLEL_HILLCLIMBER()
+phc.Evolve()
+phc.Show_Best()
 
 # for i in range(5):
 #     os.system("python generate.py")

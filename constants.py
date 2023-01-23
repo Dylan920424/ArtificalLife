@@ -8,3 +8,4 @@ maxForce = 500
 sleepTime = 1/48000
 
 numberOfGenerations = 10
+populationSize = 10
