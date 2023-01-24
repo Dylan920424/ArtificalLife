@@ -5,6 +5,8 @@ from motor import MOTOR
 from pyrosim.neuralNetwork import NEURAL_NETWORK
 import os
 import constants as c
+import numpy
+from itertools import groupby
 
 class ROBOT:
     def __init__(self, solutionID) -> None:
@@ -41,10 +43,16 @@ class ROBOT:
         self.nn.Update()
 
     def Get_Fitness(self):
-        basePositionAndOrientation = p.getBasePositionAndOrientation(self.robot)
-        basePosition = basePositionAndOrientation[0]
-        xCoordinateOfLinkZero = basePosition[0]
+        # basePositionAndOrientation = p.getBasePositionAndOrientation(self.robot)
+        # basePosition = basePositionAndOrientation[0]
+        # xCoordinateOfLinkZero = basePosition[0]
+        s = numpy.zeros(c.steps)
+        for sensor in self.sensors:
+            # s += numpy.mean(self.sensors[sensor].Get_List())
+            s += self.sensors[sensor].Get_List()
+        s = max(sum(g)/-7 for k, g in groupby(s) if k == -7)
         f = open("tmp" + str(self.myID) + ".txt", "w")
-        f.write(str(xCoordinateOfLinkZero))
+        # f.write(str(xCoordinateOfLinkZero))
+        f.write(str(s))
         f.close()
         os.system("ren tmp"+str(self.myID)+".txt " + "fitness"+str(self.myID)+".txt")

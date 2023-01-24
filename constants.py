@@ -7,9 +7,9 @@ steps = 1000
 maxForce = 500
 sleepTime = 1/48000
 
-numberOfGenerations = 10
-populationSize = 10
+numberOfGenerations = 1
+populationSize = 1
 
-numSensorNeurons = 9
+numSensorNeurons = 4
 numMotorNeurons = 8
 motorJointRange = 0.5
