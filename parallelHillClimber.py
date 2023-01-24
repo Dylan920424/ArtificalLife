@@ -43,11 +43,11 @@ class PARALLEL_HILLCLIMBER:
                 self.parents[parent] = self.children[parent]
 
     def Show_Best(self):
-        # min = self.parents[0].fitness
+        # min = float(self.parents[0].fitness)
         # show = self.parents[0]
         # for parent in self.parents:
-        #     if self.parents[parent].fitness < min:
-        #         min = self.parents[parent].fitness
+        #     if float(self.parents[parent].fitness) < min:
+        #         min = float(self.parents[parent].fitness)
         #         show = self.parents[parent]
         # show.Start_Simulation("GUI")
 

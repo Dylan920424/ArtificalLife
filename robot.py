@@ -43,7 +43,7 @@ class ROBOT:
         self.nn.Update()
 
     def Get_Fitness(self):
-        # basePositionAndOrientation = p.getBasePositionAndOrientation(self.robot)
+        # basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)
         # basePosition = basePositionAndOrientation[0]
         # xCoordinateOfLinkZero = basePosition[0]
         s = numpy.zeros(c.steps)
