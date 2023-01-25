@@ -7,8 +7,10 @@ import random
 import constants as c
 import sys
 from simulation import SIMULATION
+import os
 
-directOrGUI = sys.argv[1]
+os.system("python generate.py")
+directOrGUI = "GUI"
 simulation = SIMULATION(directOrGUI)
 simulation.Run()
 simulation.Get_Fitness()
