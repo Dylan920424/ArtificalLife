@@ -9,3 +9,5 @@ sleepTime = 1/48000
 
 numberOfGenerations = 10
 populationSize = 10
+
+maxLinks = 20
