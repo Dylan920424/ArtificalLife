@@ -22,12 +22,10 @@ def Generate_Body(links):
     pyrosim.Start_URDF("body.urdf")
     pyrosim.Send_Cube(name="link0", pos=[x, y, z], size=[length,width,height])
     for i in range(1, links):
-        if i == 1:
-            pyrosim.Send_Joint(name = "link"+str(i-1)+"_link"+str(i), parent="link"+str(i-1), child="link"+str(i), type="revolute", position=[-length/2,y,z], jointAxis="0 0 1")
-        else:
-            pyrosim.Send_Joint(name = "link"+str(i-1)+"_link"+str(i), parent="link"+str(i-1), child="link"+str(i), type="revolute", position=[-length,0,0], jointAxis="0 0 1")
+        pyrosim.Send_Joint(name = "link"+str(i-1)+"_link"+str(i), parent="link"+str(i-1), child="link"+str(i), type="revolute", position=[x-length/2,y+(random.random()-0.5)*width,z+(random.random()-0.5)*height], jointAxis="0 0 1")
         length,width,height = random.random(), random.random(), random.random()*0.5
-        pyrosim.Send_Cube(name="link"+str(i), pos=[-length/2, 0, 0], size=[length,width,height])
+        x,y,z = -length/2, (random.random()-0.5)*width, (random.random()-0.5)*height
+        pyrosim.Send_Cube(name="link"+str(i), pos=[x,y,z], size=[length,width,height])
     # pyrosim.Send_Cube(name="Torso", pos=[x,y,z], size=[length,width,height])
     # pyrosim.Send_Joint( name = "Torso_FrontLeg" , parent= "Torso" , child = "FrontLeg" , type = "revolute", position = [2,0,1])
     # pyrosim.Send_Cube(name="FrontLeg", pos=[0.5,0,-0.5], size=[length,width,height])
