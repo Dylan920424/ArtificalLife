@@ -7,9 +7,10 @@ import random
 import constants as c
 import sys
 from simulation import SIMULATION
+import os
 
 directOrGUI = sys.argv[1]
-solutionID = sys.argv[2]
-simulation = SIMULATION(directOrGUI, solutionID)
+id = sys.argv[2]
+simulation = SIMULATION(directOrGUI, id)
 simulation.Run()
 simulation.Get_Fitness()
