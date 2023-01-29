@@ -11,6 +11,6 @@ import os
 
 os.system("python generate.py")
 directOrGUI = "GUI"
-simulation = SIMULATION(directOrGUI)
+simulation = SIMULATION(directOrGUI, "")
 simulation.Run()
 simulation.Get_Fitness()

@@ -1,0 +1,53 @@
+<robot name = "robot">
+    <link name="link0">
+        <inertial>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <mass value="1" />
+            <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.9579683516047541 0.43208161797615663 0.4139078394927175" />
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0 1.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.9579683516047541 0.43208161797615663 0.4139078394927175" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="link0_link1" type="revolute">
+       <parent link="link0"/>
+       <child  link="link1"/>
+       <origin rpy="0 0 0" xyz="0.16174873607364254 -0.21604080898807831 0.8736147057771612" />
+     <axis xyz="0 0 1"/>
+       <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
+    </joint>
+    <link name="link1">
+        <inertial>
+            <origin xyz="-0.07449451905453057 -2.1475937896420216e-05 -0.13689477165668407" rpy="0 0 0"/>
+            <mass value="1" />
+            <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.07449451905453057 -2.1475937896420216e-05 -0.13689477165668407" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.2370559000649034 4.295187579284043e-05 0.9196975349765025" />
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0 1.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-0.07449451905453057 -2.1475937896420216e-05 -0.13689477165668407" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.2370559000649034 4.295187579284043e-05 0.9196975349765025" />
+            </geometry>
+        </collision>
+    </link>
+</robot>

@@ -8,7 +8,7 @@ import os
 class ROBOT:
     def __init__(self, solutionID) -> None:
         self.myID = solutionID
-        self.robotId = p.loadURDF("body.urdf")
+        self.robotId = p.loadURDF("body" + str(self.myID) + ".urdf")
         self.nn = NEURAL_NETWORK("brain" + str(self.myID) + ".nndf")
         # os.system("del brain" + str(self.myID) + ".nndf")
         pyrosim.Prepare_To_Simulate(self.robotId)

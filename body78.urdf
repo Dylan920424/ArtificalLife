@@ -1,0 +1,140 @@
+<robot name = "robot">
+    <link name="link0">
+        <inertial>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <mass value="1" />
+            <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.6905740210160566 0.4329969953011802 0.7117423557440716" />
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0 1.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.6905740210160566 0.4329969953011802 0.7117423557440716" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="link0_link1" type="revolute">
+       <parent link="link0"/>
+       <child  link="link1"/>
+       <origin rpy="0 0 0" xyz="-0.14871144513189144 -0.2034598048328005 0.6441288221279642" />
+     <axis xyz="1 0 0"/>
+       <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
+    </joint>
+    <link name="link1">
+        <inertial>
+            <origin xyz="-0.004433114324575483 0.002194387522558711 -0.05070561514846805" rpy="0 0 0"/>
+            <mass value="1" />
+            <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.004433114324575483 0.002194387522558711 -0.05070561514846805" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.05432236150639369 0.14787115638283055 0.1014112302969361" />
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0 1.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-0.004433114324575483 0.002194387522558711 -0.05070561514846805" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.05432236150639369 0.14787115638283055 0.1014112302969361" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="link0_link2" type="revolute">
+       <parent link="link0"/>
+       <child  link="link2"/>
+       <origin rpy="0 0 0" xyz="0.3452870105080283 0.08309723747808716 0.7630068256292482" />
+     <axis xyz="0 1 0"/>
+       <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
+    </joint>
+    <link name="link2">
+        <inertial>
+            <origin xyz="0.0876702742891648 0.005437801118871826 0.3662279818215473" rpy="0 0 0"/>
+            <mass value="1" />
+            <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+        </inertial>
+        <visual>
+            <origin xyz="0.0876702742891648 0.005437801118871826 0.3662279818215473" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.1753405485783296 0.02927101951752875 0.9549806327921682" />
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0 1.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0876702742891648 0.005437801118871826 0.3662279818215473" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.1753405485783296 0.02927101951752875 0.9549806327921682" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="link1_link3" type="revolute">
+       <parent link="link1"/>
+       <child  link="link3"/>
+       <origin rpy="0 0 0" xyz="0.010169974699525845 0.008376142433404201 -0.1014112302969361" />
+     <axis xyz="1 0 0"/>
+       <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
+    </joint>
+    <link name="link3">
+        <inertial>
+            <origin xyz="-0.0935818478495374 -0.025262235542437294 -0.050079630778453066" rpy="0 0 0"/>
+            <mass value="1" />
+            <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.0935818478495374 -0.025262235542437294 -0.050079630778453066" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.8791541595915612 0.06648025305165894 0.10015926155690613" />
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0 1.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-0.0935818478495374 -0.025262235542437294 -0.050079630778453066" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.8791541595915612 0.06648025305165894 0.10015926155690613" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="link1_link4" type="revolute">
+       <parent link="link1"/>
+       <child  link="link4"/>
+       <origin rpy="0 0 0" xyz="-0.031594295077772325 0.02922094976820487 -0.012481276130835738" />
+     <axis xyz="0 0 1"/>
+       <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
+    </joint>
+    <link name="link4">
+        <inertial>
+            <origin xyz="-0.15385818868974205 -0.26402340517537604 -0.3873216992728286" rpy="0 0 0"/>
+            <mass value="1" />
+            <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.15385818868974205 -0.26402340517537604 -0.3873216992728286" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.3077163773794841 0.7060130084717209 0.8356325636479244" />
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0 1.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-0.15385818868974205 -0.26402340517537604 -0.3873216992728286" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.3077163773794841 0.7060130084717209 0.8356325636479244" />
+            </geometry>
+        </collision>
+    </link>
+</robot>

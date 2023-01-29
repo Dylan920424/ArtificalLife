@@ -7,7 +7,7 @@ steps = 1000
 maxForce = 500
 sleepTime = 1/48000
 
-numberOfGenerations = 10
-populationSize = 10
+numberOfGenerations = 100
+populationSize = 100
 
-maxLinks = 20
+maxLinks = 15
