@@ -2,6 +2,7 @@ import os
 import parallelHillClimber
 
 os.system("del brain*.nndf")
+os.system("del body*.urdf")
 os.system("del fitness*.txt")
 phc = parallelHillClimber.PARALLEL_HILLCLIMBER()
 phc.Evolve()

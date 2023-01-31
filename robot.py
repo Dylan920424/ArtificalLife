@@ -9,9 +9,9 @@ import numpy
 from itertools import groupby
 
 class ROBOT:
-    def __init__(self, solutionID) -> None:
+    def __init__(self, solutionID, tmp=False) -> None:
         self.myID = solutionID
-        self.robotId = p.loadURDF("body.urdf")
+        self.robotId = p.loadURDF("body" + str(self.myID) + ".urdf")
         self.nn = NEURAL_NETWORK("brain" + str(self.myID) + ".nndf")
         # os.system("del brain" + str(self.myID) + ".nndf")
         pyrosim.Prepare_To_Simulate(self.robotId)
@@ -43,16 +43,16 @@ class ROBOT:
         self.nn.Update()
 
     def Get_Fitness(self):
-        # basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)
-        # basePosition = basePositionAndOrientation[0]
-        # xCoordinateOfLinkZero = basePosition[0]
-        s = numpy.zeros(c.steps)
-        for sensor in self.sensors:
-            # s += numpy.mean(self.sensors[sensor].Get_List())
-            s += self.sensors[sensor].Get_List()
-        s = max(sum(g)/-7 for k, g in groupby(s) if k == -7)
+        basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)
+        basePosition = basePositionAndOrientation[0]
+        xCoordinateOfLinkZero = basePosition[0]
+        # s = numpy.zeros(c.steps)
+        # for sensor in self.sensors:
+        #     # s += numpy.mean(self.sensors[sensor].Get_List())
+        #     s += self.sensors[sensor].Get_List()
+        # s = max(sum(g)/-7 for k, g in groupby(s) if k == -7)
         f = open("tmp" + str(self.myID) + ".txt", "w")
-        # f.write(str(xCoordinateOfLinkZero))
-        f.write(str(s))
+        f.write(str(xCoordinateOfLinkZero))
+        # f.write(str(s))
         f.close()
         os.system("ren tmp"+str(self.myID)+".txt " + "fitness"+str(self.myID)+".txt")
