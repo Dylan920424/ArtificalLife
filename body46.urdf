@@ -1,0 +1,53 @@
+<robot name = "robot">
+    <link name="link0">
+        <inertial>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <mass value="1" />
+            <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.4315031458962084 0.25707100702467844 0.9072260080082454" />
+            </geometry>
+            <material name="Cyan">
+                <color rgba="0.0 1.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 1" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.4315031458962084 0.25707100702467844 0.9072260080082454" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="link0_link1" type="revolute">
+       <parent link="link0"/>
+       <child  link="link1"/>
+       <origin rpy="0 0 0" xyz="0.056966392767339356 -0.05952240127726661 1.4536130040041226" />
+     <axis xyz="0 0 1"/>
+       <limit effort="0.0" lower="-3.14159" upper="3.14159" velocity="0.0"/>
+    </joint>
+    <link name="link1">
+        <inertial>
+            <origin xyz="-0.2569595175983528 0.014370067566062926 0.043257926615297204" rpy="0 0 0"/>
+            <mass value="1" />
+            <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.2569595175983528 0.014370067566062926 0.043257926615297204" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.8773089020840625 0.22240358299446683 0.08651585323059441" />
+            </geometry>
+            <material name="Green">
+                <color rgba="0.0 1.0 0.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-0.2569595175983528 0.014370067566062926 0.043257926615297204" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.8773089020840625 0.22240358299446683 0.08651585323059441" />
+            </geometry>
+        </collision>
+    </link>
+</robot>
