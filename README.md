@@ -1,6 +1,13 @@
 # ArtificalLife
 run the search.py file to run parallel hill climber evolution with both body and brain mutations training the body to move away from the camera
 
+# Constants that could be changed in constants.py
+- numberOfGenerations: The number of generations that the parallel hill climber goes through
+- populationSize: The size of the population per iteration
+- maxLinks: the maximum amount of links that a randomly generated creature could have
+- motorJointRange: the range that the joints could move on each motor
+- steps: the amount of steps each evaluation goes through
+
 # Body plan and Brain generation
 Everything was randomized and initialized in the init function creating a series of matrixes. 
 
@@ -28,6 +35,10 @@ Everything that was initialized in the generation could be mutated simulatenousl
 
 These probability are purely arbitrary, and is decided from least disruptive to most.
 
+# 5 fitness curves of a population of 25 over 25 generations
+![Figure_1](https://user-images.githubusercontent.com/53017682/216672148-44d7b5f5-08d4-4861-89e8-77292c6ab0db.png)
+
 # Resources and citations
 ludobots reddit page: https://www.reddit.com/r/ludobots/
 pyrosim github: https://github.com/ccappelle/pyrosim
+
