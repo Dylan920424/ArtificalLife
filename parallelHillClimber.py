@@ -6,6 +6,7 @@ class PARALLEL_HILLCLIMBER:
     def __init__(self) -> None:
         self.parents = {}
         self.nextAvailableID = 0
+        self.fitness_curve = []
         for i in range(constants.populationSize):
             temp = solution.SOLUTION(self.nextAvailableID)
             self.nextAvailableID += 1
@@ -13,8 +14,11 @@ class PARALLEL_HILLCLIMBER:
 
     def Evolve(self):
         self.Evaluate(self.parents)
+        self.fitness_curve.append(self.Find_Best())
         for currentGeneration in range(constants.numberOfGenerations):
             self.Evolve_For_One_Generation()
+            self.fitness_curve.append(self.Find_Best())
+        return self.fitness_curve
     
     def Evolve_For_One_Generation(self):
         self.Spawn()
@@ -41,6 +45,13 @@ class PARALLEL_HILLCLIMBER:
         for parent in self.parents:
             if float(self.parents[parent].fitness) > float(self.children[parent].fitness):
                 self.parents[parent] = self.children[parent]
+
+    def Find_Best(self):
+        min = float(self.parents[0].fitness)
+        for parent in self.parents:
+            if float(self.parents[parent].fitness) < min:
+                min = float(self.parents[parent].fitness)
+        return min
 
     def Show_Best(self):
         min = float(self.parents[0].fitness)
