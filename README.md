@@ -37,6 +37,7 @@ These probability are purely arbitrary, and is decided from least disruptive to 
 
 # 5 fitness curves of a population of 25 over 25 generations
 ![Figure_1](https://user-images.githubusercontent.com/53017682/216672148-44d7b5f5-08d4-4861-89e8-77292c6ab0db.png)
+This was created by running 5 simulations of population 25 and generation 25 whilst keeping track of the best fitness of each generation
 
 # Resources and citations
 ludobots reddit page: https://www.reddit.com/r/ludobots/
