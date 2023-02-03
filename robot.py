@@ -43,16 +43,17 @@ class ROBOT:
         self.nn.Update()
 
     def Get_Fitness(self):
-        # basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)
-        # basePosition = basePositionAndOrientation[0]
-        # xCoordinateOfLinkZero = basePosition[0]
-        s = numpy.zeros(c.steps)
-        for sensor in self.sensors:
-            # s += numpy.mean(self.sensors[sensor].Get_List())
-            s += self.sensors[sensor].Get_List()
-        s = max(sum(g)/-7 for k, g in groupby(s) if k == -7)
+        basePositionAndOrientation = p.getBasePositionAndOrientation(self.robotId)
+        basePosition = basePositionAndOrientation[0]
+        xCoordinateOfLinkZero = basePosition[0]
+        # s = numpy.zeros(c.steps)
+        # for sensor in self.sensors:
+        #     # s += numpy.mean(self.sensors[sensor].Get_List())
+        #     s += self.sensors[sensor].Get_List()
+        # s = max(sum(g)/-7 for k, g in groupby(s) if k == -7)
+        s = sum(self.sensors["Torso"].Get_List())*0.003
         f = open("tmp" + str(self.myID) + ".txt", "w")
-        # f.write(str(xCoordinateOfLinkZero))
-        f.write(str(s))
+        f.write(str(xCoordinateOfLinkZero*s))
+        # f.write(str(s))
         f.close()
         os.system("ren tmp"+str(self.myID)+".txt " + "fitness"+str(self.myID)+".txt")

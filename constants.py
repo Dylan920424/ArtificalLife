@@ -10,6 +10,6 @@ sleepTime = 1/48000
 numberOfGenerations = 1
 populationSize = 1
 
-numSensorNeurons = 4
-numMotorNeurons = 8
+numSensorNeurons = 7
+numMotorNeurons = 6
 motorJointRange = 0.2
