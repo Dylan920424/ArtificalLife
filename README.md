@@ -26,6 +26,14 @@ Then the following properties were intialized for each link:
 Then the weights of the synapses were randomized in a fashion similar to the previous tasks.
 All the sensors and motors are fully connected.
 
+# Diagrams of Generation
+Body Plan Generation:
+![Figure_3](https://github.com/Dylan920424/ArtificalLife/blob/final/IMG_0846.jpg)
+
+Brain Generation:
+![Figure_2](https://github.com/Dylan920424/ArtificalLife/blob/final/IMG_0845.jpg)
+
+
 # Mutations
 Everything that was initialized in the generation could be mutated simulatenously with a different probability.
 
