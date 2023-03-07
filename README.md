@@ -85,6 +85,16 @@ The right side is the average morphological and brain change graph, with the gen
 # Parallel hill climber with catastrophes of a population of 256, capping the maximum simulations at 10,000; alternating brain/body mutations each catastrophe
 ![Figure_6](https://github.com/Dylan920424/ArtificalLife/blob/f86cee71da0628b40971c4fdda5d19b8e1fa8d44/brainVbody.png)
 
+# Conclusion
+Based on the four simulations ran, there are two conclusions that could be drawn, answers the two questions posed for this project.
+
+1. For both simulations that utilized the catastrophe method, the final fitness in general reaches a higher value than the ones without. So there may be a increase in efficiency for the method, but more simulations for a longer period of time would be required to form a more concrete conclusion.
+
+2. With the current setting of the mutations, there are no clear difference between the average changes in morphology and brain weights. However, when the alternating method is not utilized, the average changes in morphology is slightly higher than the brain, and when it is utilized the average of both is around the same.
+
+# Future Recommendations & Limitations
+For question 1, the main recommendation would be to run the simulation for more seeds and for a longer time to make sure that the results are not purely random and by chance. For question 2, it would be interesting to test the same hypothesis with a more disruptive mutation method as the current method is quite tame for body mutation.
+
 # Resources and citations
 ludobots reddit page: https://www.reddit.com/r/ludobots/
 pyrosim github: https://github.com/ccappelle/pyrosim
