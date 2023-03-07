@@ -8,6 +8,8 @@ import constants as c
 class SOLUTION:
     def __init__(self, nextAvailableID) -> None:
         self.myId = nextAvailableID
+        self.morpho = 0
+        self.brain = 0
         self.links = random.randint(2, c.maxLinks)
         self.sizes = [[random.random(), random.random(), random.random()]]
         self.connections, self.directions, self.axis, self.posnegs, self.posdif, self.sensorprobs, self.motorprobs, self.boxpos = [], [], [], [], [], [], [], []
@@ -27,11 +29,13 @@ class SOLUTION:
         self.Create_Brain()
 
     def Start_Simulation(self, directOrGUI):
+        self.Create_Body()
+        self.Create_Brain()
         os.system("start /B python simulate.py " + directOrGUI + " " + str(self.myId))
 
     def Wait_For_Simulation_To_End(self):
         while not os.path.exists("fitness" + str(self.myId) + ".txt"):
-            time.sleep(0.01)
+            time.sleep(0.08)
         fitnessFile = open("fitness" + str(self.myId) + ".txt", "r")
         self.fitness = fitnessFile.read()
         fitnessFile.close()
@@ -49,7 +53,8 @@ class SOLUTION:
 
     def Mutate(self):
         self.Create_World()
-        if random.random() < 0.6 and len(self.have_sensor) > 0 and len(self.have_motors) > 0:
+        if random.random() > 0.5 and len(self.have_sensor) > 0 and len(self.have_motors) > 0:
+            self.brain += 1
             if len(self.have_sensor) == 1: 
                 randomRow = 0
             else:
@@ -59,28 +64,91 @@ class SOLUTION:
             else:
                 randomColumn = random.randint(0, len(self.have_motors)-1)
             self.weights[randomRow, randomColumn] = random.random()*2-1
-        if random.random() < 0.2:
-            randomRow = random.randint(0, len(self.sizes)-1)
-            randomColumn = random.randint(0,2)
-            self.sizes[randomRow][randomColumn] = random.random()
-        if random.random() < 0.2:
-            randomRow = random.randint(0, len(self.posdif)-1)
-            randomColumn = random.randint(0,2)
-            self.posdif[randomRow][randomColumn] = random.random()
-        if random.random() < 0.2:
-            randomRow = random.randint(0, len(self.boxpos)-1)
-            randomColumn = random.randint(0,2)
-            self.boxpos[randomRow][randomColumn] = random.random()
-        if random.random() < 0.2:
-            randomRow = random.randint(0, len(self.connections)-1)
-            if randomRow > 1:
-                self.connections[randomRow] = random.randint(0, randomRow-1)
-        if random.random() < 0.05:
-            randomRow = random.randint(0, len(self.directions)-1)
-            self.directions[randomRow] = random.randint(0,2)
-        if random.random() < 0.05:
-            randomRow = random.randint(0, len(self.axis)-1)
-            self.axis[randomRow] = random.randint(0,2)
+        else:
+            self.morpho += 1
+            choose = random.random()
+            if choose < 0.2:
+                randomRow = random.randint(0, len(self.sizes)-1)
+                randomColumn = random.randint(0,2)
+                self.sizes[randomRow][randomColumn] = random.random()
+            elif choose < 0.4:
+                randomRow = random.randint(0, len(self.posdif)-1)
+                randomColumn = random.randint(0,2)
+                self.posdif[randomRow][randomColumn] = random.random()
+            elif choose < 0.6:
+                randomRow = random.randint(0, len(self.boxpos)-1)
+                randomColumn = random.randint(0,2)
+                self.boxpos[randomRow][randomColumn] = random.random()
+            elif choose < 0.7:
+                randomRow = random.randint(0, len(self.connections)-1)
+                if randomRow > 1:
+                    self.connections[randomRow] = random.randint(0, randomRow-1)
+            elif choose < 0.8:
+                randomRow = random.randint(0, len(self.directions)-1)
+                self.directions[randomRow] = random.randint(0,2)
+            elif choose < 0.9:
+                randomRow = random.randint(0, len(self.axis)-1)
+                self.axis[randomRow] = random.randint(0,2)
+            else:
+                self.links += 1
+                self.connections.append(random.randint(0,self.links-2))
+                self.sizes.append([random.random(), random.random(), random.random()])
+                self.directions.append(random.randint(0,2))
+                self.axis.append(random.randint(0,2))
+                self.posnegs.append(random.randint(0,1))
+                self.posdif.append([random.random(), random.random(), random.random()])
+                self.boxpos.append([random.random(), random.random(), random.random()])
+                sensorprobs = random.random() >= 0.2
+                motorprobs = random.random() >= 0.2
+                self.sensorprobs.append(sensorprobs)
+                self.motorprobs.append(motorprobs)
+                if sensorprobs:
+                    newrow = numpy.random.rand(1,self.weights.shape[1])
+                    self.weights = numpy.concatenate((self.weights,newrow), axis=0)
+                if motorprobs:
+                    newcol = numpy.random.rand(self.weights.shape[0],1)
+                    self.weights = numpy.concatenate((self.weights,newcol), axis=1)
+        self.Create_Body()
+        self.Create_Brain()
+
+    def Mutate_mhc(self, version):
+        self.Create_World()
+        if version and len(self.have_sensor) > 0 and len(self.have_motors) > 0:
+            self.brain += 1
+            if len(self.have_sensor) == 1: 
+                randomRow = 0
+            else:
+                randomRow = random.randint(0, len(self.have_sensor)-1)
+            if len(self.have_motors) == 1:
+                randomColumn = 0
+            else:
+                randomColumn = random.randint(0, len(self.have_motors)-1)
+            self.weights[randomRow, randomColumn] = random.random()*2-1
+        else:
+            self.morpho += 1
+            choose = random.random()
+            if choose < 0.2:
+                randomRow = random.randint(0, len(self.sizes)-1)
+                randomColumn = random.randint(0,2)
+                self.sizes[randomRow][randomColumn] = random.random()
+            elif choose < 0.4:
+                randomRow = random.randint(0, len(self.posdif)-1)
+                randomColumn = random.randint(0,2)
+                self.posdif[randomRow][randomColumn] = random.random()
+            elif choose < 0.6:
+                randomRow = random.randint(0, len(self.boxpos)-1)
+                randomColumn = random.randint(0,2)
+                self.boxpos[randomRow][randomColumn] = random.random()
+            elif choose < 0.8:
+                randomRow = random.randint(0, len(self.connections)-1)
+                if randomRow > 1:
+                    self.connections[randomRow] = random.randint(0, randomRow-1)
+            elif choose < 0.9:
+                randomRow = random.randint(0, len(self.directions)-1)
+                self.directions[randomRow] = random.randint(0,2)
+            else:
+                randomRow = random.randint(0, len(self.axis)-1)
+                self.axis[randomRow] = random.randint(0,2)
         self.Create_Body()
         self.Create_Brain()
 
@@ -143,4 +211,13 @@ class SOLUTION:
         pyrosim.End()
         
     def Set_ID(self, id):
-        self.id = id
+        self.myId = id
+
+    def ID(self):
+        return self.myId
+    
+    def Get_morpho(self):
+        return self.morpho
+
+    def Fitness(self):
+        return self.fitness

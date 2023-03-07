@@ -7,11 +7,16 @@ steps = 1000
 maxForce = 500
 sleepTime = 1/48000
 
-numberOfGenerations = 25
-populationSize = 25
+numberOfGenerations = 38
+populationSize = 256
+
+numberOfStagnation = 5
 
 numSensorNeurons = 4
 numMotorNeurons = 8
-motorJointRange = 0.2
+motorJointRange = 0.5
 
 maxLinks = 10
+maxGen = 10000
+
+catastrophe = 1

@@ -24,17 +24,32 @@ class PARALLEL_HILLCLIMBER:
         self.fitness_curve.append(fitness)
         self.morpho_curve.append(morpho)
         self.brain_curve.append(brain)
-        for _ in range(constants.numberOfGenerations):
-            self.Evolve_For_One_Generation()
-            fitness, morpho, brain = self.Find_Best()
-            self.fitness_curve.append(fitness)
-            self.morpho_curve.append(morpho)
-            self.brain_curve.append(brain)
+        last = fitness
+        gens = 0
+        limit = math.floor(math.log2(constants.populationSize))
+        for switch in range(limit):
+            gens = 0
+            while True:
+                self.Evolve_For_One_Generation(switch%2)
+                fitness, morpho, brain = self.Find_Best()
+                self.fitness_curve.append(fitness)
+                self.morpho_curve.append(morpho)
+                self.brain_curve.append(brain)
+                if fitness == last:
+                    gens += 1
+                last = fitness
+                if gens == constants.numberOfStagnation:
+                    break
+                if self.nextAvailableID >= constants.maxGen:
+                    break
+            if self.nextAvailableID >= constants.maxGen:
+                    break
+            self.Catastrophe()
         return self.fitness_curve, self.morpho_curve, self.brain_curve
 
-    def Evolve_For_One_Generation(self):
+    def Evolve_For_One_Generation(self, version):
         self.Spawn()
-        self.Mutate()
+        self.Mutate(version)
         self.Evaluate(self.children)
         # for parent in self.parents:
         #     print("\n")
@@ -63,9 +78,10 @@ class PARALLEL_HILLCLIMBER:
             self.children[parent].Set_ID(self.nextAvailableID)
             self.nextAvailableID += 1
 
-    def Mutate(self):
+    def Mutate(self, version):
         for child in self.children:
-            self.children[child].Mutate()
+            self.children[child].Mutate_mhc(version)
+            # self.children[child].Mutate()
 
     def Select(self):
         for parent in self.parents:

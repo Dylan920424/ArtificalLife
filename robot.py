@@ -7,13 +7,15 @@ import os
 import constants as c
 import numpy
 from itertools import groupby
+import time
 
 class ROBOT:
     def __init__(self, solutionID, tmp=False) -> None:
         self.myID = solutionID
         self.robotId = p.loadURDF("body" + str(self.myID) + ".urdf")
         self.nn = NEURAL_NETWORK("brain" + str(self.myID) + ".nndf")
-        # os.system("del brain" + str(self.myID) + ".nndf")
+        os.system("del brain" + str(self.myID) + ".nndf")
+        os.system("del body" + str(self.myID)+ ".urdf")
         pyrosim.Prepare_To_Simulate(self.robotId)
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
