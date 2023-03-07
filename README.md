@@ -77,13 +77,13 @@ The right side is the average morphological and brain change graph, with the gen
 ![Figure_1](https://github.com/Dylan920424/ArtificalLife/blob/f86cee71da0628b40971c4fdda5d19b8e1fa8d44/PHCmorphoVbrain.png)
 
 # Normal parallel hill climber of a population of 256 for 38 generations; alternating brain/body mutations each time the population stagnates
-![Figure_4] (https://github.com/Dylan920424/ArtificalLife/blob/f86cee71da0628b40971c4fdda5d19b8e1fa8d44/SwitchBodyVBrain.png)
+![Figure_4](https://github.com/Dylan920424/ArtificalLife/blob/f86cee71da0628b40971c4fdda5d19b8e1fa8d44/SwitchBodyVBrain.png)
 
 # Parallel hill climber with catastrophes of a population of 256, capping the maximum simulations at 10,000
-![Figure_5] (https://github.com/Dylan920424/ArtificalLife/blob/f86cee71da0628b40971c4fdda5d19b8e1fa8d44/cat_wo_switch.png)
+![Figure_5](https://github.com/Dylan920424/ArtificalLife/blob/f86cee71da0628b40971c4fdda5d19b8e1fa8d44/cat_wo_switch.png)
 
 # Parallel hill climber with catastrophes of a population of 256, capping the maximum simulations at 10,000; alternating brain/body mutations each catastrophe
-![Figure_6] (https://github.com/Dylan920424/ArtificalLife/blob/f86cee71da0628b40971c4fdda5d19b8e1fa8d44/brainVbody.png)
+![Figure_6](https://github.com/Dylan920424/ArtificalLife/blob/f86cee71da0628b40971c4fdda5d19b8e1fa8d44/brainVbody.png)
 
 # Resources and citations
 ludobots reddit page: https://www.reddit.com/r/ludobots/
