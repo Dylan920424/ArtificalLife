@@ -7,6 +7,7 @@ There are two main goals that I am going to evaluate in the project:
 - when a certain number of generation passes without a increase in fitness, the less fit half of the population would be killed and replaced by the better fitting half.
 - trying to see whether or not implementing both breadth and depth search outperforms just parallel hill climber
 
+
 2. Brain vs Morphology change over time
 - trying to see the difference between average changes in the brain (nerual network weights) and the morphology (body plan) over the generations
 
@@ -73,13 +74,16 @@ For the following graphs, the left side is the fitness graph, with the generatio
 The right side is the average morphological and brain change graph, with the generations on the x-axis and the average number of changes on the y-axis, with the morpholgical changes in blue and the brain changes in red.
 
 # Normal parallel hill climber of a population of 256 for 38 generations
-![Figure_1](https://user-images.githubusercontent.com/53017682/216672148-44d7b5f5-08d4-4861-89e8-77292c6ab0db.png)
+![Figure_1](https://github.com/Dylan920424/ArtificalLife/blob/f86cee71da0628b40971c4fdda5d19b8e1fa8d44/PHCmorphoVbrain.png)
 
 # Normal parallel hill climber of a population of 256 for 38 generations; alternating brain/body mutations each time the population stagnates
+![Figure_4] (https://github.com/Dylan920424/ArtificalLife/blob/f86cee71da0628b40971c4fdda5d19b8e1fa8d44/SwitchBodyVBrain.png)
 
 # Parallel hill climber with catastrophes of a population of 256, capping the maximum simulations at 10,000
+![Figure_5] (https://github.com/Dylan920424/ArtificalLife/blob/f86cee71da0628b40971c4fdda5d19b8e1fa8d44/cat_wo_switch.png)
 
 # Parallel hill climber with catastrophes of a population of 256, capping the maximum simulations at 10,000; alternating brain/body mutations each catastrophe
+![Figure_6] (https://github.com/Dylan920424/ArtificalLife/blob/f86cee71da0628b40971c4fdda5d19b8e1fa8d44/brainVbody.png)
 
 # Resources and citations
 ludobots reddit page: https://www.reddit.com/r/ludobots/
