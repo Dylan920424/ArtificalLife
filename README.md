@@ -1,8 +1,28 @@
 # ArtificalLife
 run the search.py file to run parallel hill climber evolution with both body and brain mutations training the body to move away from the camera
 
+# Project Goals
+There are two main goals that I am going to evaluate in the project:
+1. Catastrophe (combination of breadth and depth random search in evolution):
+- when a certain number of generation passes without a increase in fitness, the less fit half of the population would be killed and replaced by the better fitting half.
+- trying to see whether or not implementing both breadth and depth search outperforms just parallel hill climber
+
+2. Brain vs Morphology change over time
+- trying to see the difference between average changes in the brain (nerual network weights) and the morphology (body plan) over the generations
+
+# Methods
+The goals of this project is done by performing four main search iterations with the following adjustments:
+
+1. Normal parallel hill climber of a population of 256 for 38 generations
+2. Normal parallel hill climber of a population of 256 for 38 generations; alternating brain/body mutations each time the population stagnates
+3. Parallel hill climber with catastrophes of a population of 256, capping the maximum simulations at 10,000
+4. Parallel hill climber with catastrophes of a population of 256, capping the maximum simulations at 10,000; alternating brain/body mutations each catastrophe
+
+The ones without specifications on the mutations have a free choice of randomizing whether to mutate body or brain.
+
 # Constants that could be changed in constants.py
-- numberOfGenerations: The number of generations that the parallel hill climber goes through
+- maxGen: The maximum number of generations that the parallel hill climber goes through
+- numberOfStagnation: The number of stagnating evolution required before a catastrophe happens
 - populationSize: The size of the population per iteration
 - maxLinks: the maximum amount of links that a randomly generated creature could have
 - motorJointRange: the range that the joints could move on each motor
@@ -37,16 +57,29 @@ Brain Generation:
 # Mutations
 Everything that was initialized in the generation could be mutated simulatenously with a different probability.
 
-60% probability to alter one of the synapse weights
-20% probability to alter one of the link's size / joint position / center position / which link it is connected to
-5% probability to alter one of the link's direction and axis of revolute
+50% probability to perform a brain mutation: 
+- to alter one of the synapse weights
+
+50% probability to perform a body mutation:
+- 20% probability each to alter one of the link's size / joint position / center position / which link it is connected to
+- 10% probability to alter one of the link's direction and axis of revolute
+- 10% probability to randomly add a new link
 
 These probability are purely arbitrary, and is decided from least disruptive to most.
+When the mutations are alternating, only the probability within brain/body matters
 
-# 5 fitness curves of a population of 25 over 25 generations
+# Graphs
+For the following graphs, the left side is the fitness graph, with the generations on the x-axis and the fitness score on the y-axis.
+The right side is the average morphological and brain change graph, with the generations on the x-axis and the average number of changes on the y-axis, with the morpholgical changes in blue and the brain changes in red.
+
+# Normal parallel hill climber of a population of 256 for 38 generations
 ![Figure_1](https://user-images.githubusercontent.com/53017682/216672148-44d7b5f5-08d4-4861-89e8-77292c6ab0db.png)
 
-This was created by running 5 simulations of population 25 and generation 25 whilst keeping track of the best fitness of each generation
+# Normal parallel hill climber of a population of 256 for 38 generations; alternating brain/body mutations each time the population stagnates
+
+# Parallel hill climber with catastrophes of a population of 256, capping the maximum simulations at 10,000
+
+# Parallel hill climber with catastrophes of a population of 256, capping the maximum simulations at 10,000; alternating brain/body mutations each catastrophe
 
 # Resources and citations
 ludobots reddit page: https://www.reddit.com/r/ludobots/
