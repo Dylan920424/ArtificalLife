@@ -69,6 +69,12 @@ Everything that was initialized in the generation could be mutated simulatenousl
 These probability are purely arbitrary, and is decided from least disruptive to most.
 When the mutations are alternating, only the probability within brain/body matters
 
+Mutation Figures:
+![Figure_7](https://github.com/Dylan920424/ArtificalLife/blob/final/IMG_0920.jpg)
+
+# Evolution Figures for Demonstration:
+![Figure_8](https://github.com/Dylan920424/ArtificalLife/blob/final/IMG_0921.jpg)
+
 # Graphs
 For the following graphs, the left side is the fitness graph, with the generations on the x-axis and the fitness score on the y-axis.
 The right side is the average morphological and brain change graph, with the generations on the x-axis and the average number of changes on the y-axis, with the morpholgical changes in blue and the brain changes in red.
