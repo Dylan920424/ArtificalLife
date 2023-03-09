@@ -1,6 +1,12 @@
 # ArtificalLife
 run the search.py file to run parallel hill climber evolution with both body and brain mutations training the body to move away from the camera
 
+# Youtube Video
+https://youtu.be/zWSE5UfQRqI
+
+# Teaser GIF
+![Figure_9](https://github.com/Dylan920424/ArtificalLife/blob/ca364a0eff8be74cb367d5b62efd7c7f513c3319/teaser.gif)
+
 # Project Goals
 There are two main goals that I am going to evaluate in the project:
 1. Catastrophe (combination of breadth and depth random search in evolution):
